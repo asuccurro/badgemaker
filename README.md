@@ -1,5 +1,7 @@
 # BadgeMaker
 
+Creates pdf files ready to be printed to make badges (e.g. on perforated paper). To use you will have to:
+
 1. Have all your participants collected in a csv file (e.g. `participants/list.csv`)
 2. Fix the LaTeX template `tex/template_top.tex` to your needs. The current template is for 8 badges of dimension 60mm x 90mm printed on perforated A4 paper
 3. Run the python script
