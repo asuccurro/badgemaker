@@ -24,7 +24,10 @@ def main():
     infilename = args.infilename
     outfilename = args.outfilename.split('.')
     delimiter = args.delimiter
-    removerows = [int(i) for i in args.removerows.split(' ')]
+    if len(args.removerows) > 0:
+        removerows = [int(i) for i in args.removerows.split(' ')]
+    else:
+        removerows = []
     nbadgesppage = int(args.nbadgesppage)
     namekey = args.namekey
     affkey = args.affkey
