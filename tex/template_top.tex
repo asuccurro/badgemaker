@@ -1,0 +1,43 @@
+\documentclass[a4paper,oneside]{extarticle}
+
+\usepackage{geometry}
+\usepackage{blindtext}
+\usepackage{adjustbox}
+\usepackage[utf8]{inputenc}
+
+\usepackage[many]{tcolorbox}
+
+
+%%% These settings are for A4 perforated sheets
+%%% With 8 badges of dimension 60mm x 90mm
+\geometry{
+    a4paper,
+    centering,
+    left=15mm,
+    right=15mm,
+    top=28.5mm,
+    ignoreall,
+}
+
+\renewcommand{\familydefault}{\sfdefault}
+\pagestyle{empty}
+\hyphenpenalty=10000
+
+
+\newtcbox{\myboxI}{blank,boxsep=3mm,
+  clip upper,fit,fit algorithm=hybrid*,
+  width=89.7mm,height=59.7mm,nobeforeafter,
+  %For final printing on the perforated paper make border invisible:
+  %borderline={0.0pt}{0pt}{white},
+  %For test printing on normal paper keep border visible:
+  borderline={0.0pt}{0pt}{black!70!white},
+  box align=center,
+  halign=center,
+  valign=center,
+  fontlower=\large,
+  fonttitle=\large,
+  }
+
+\begin{document}
+
+\noindent
