@@ -44,11 +44,11 @@ def main():
             elif l in removerows:
                 print(f"Line {l} is to be removed: {row}")
             else:
-                c += 1
                 if c % nbadgesppage == 0:
                     ofile.close()
                     ofile = open(f"{outfilename[0]}_{int(c/nbadgesppage)+1}.{outfilename[1]}", 'w')
                 ofile.write(f"\\myboxI{{\\huge {row[kn]}\\\\[1ex]\\Large {row[ka]} }}\n")
+                c += 1
             l+=1
 
     if c % nbadgesppage > 0:
