@@ -11,7 +11,7 @@
 python create_badges.py 
 ```
 
-Options:
+### Options:
 
 ```bash
   -h, --help            show this help message and exit
@@ -32,3 +32,17 @@ Options:
                         Key for affiliation field
 
 ```
+
+### Output:
+
+Various .tex files, containing 8 lines each (1 line == 1 badge)
+
+## Bash script usage
+
+```bash
+source compile.sh
+```
+
+### Output:
+
+One .tex file per page, assembled from the template and the python script outputs, and the corresponding compiled .pdf files
