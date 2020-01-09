@@ -31,6 +31,9 @@ def main():
     nbadgesppage = int(args.nbadgesppage)
     namekey = args.namekey
     affkey = args.affkey
+    emailkey = args.emailkey
+
+    emailsreg = []
 
     with open(infilename) as infile:
         csvr = csv.reader(infile, delimiter=',')
@@ -41,6 +44,7 @@ def main():
             if l < 1:
                 kn = row.index(namekey)
                 ka = row.index(affkey)
+                ke = row.index(emailkey)
             elif l in removerows:
                 print(f"Line {l} is to be removed: {row}")
             else:
@@ -49,11 +53,17 @@ def main():
                     ofile = open(f"{outfilename[0]}_{int(c/nbadgesppage)+1}.{outfilename[1]}", 'w')
                 ofile.write(f"\\myboxI{{\\huge {row[kn]}\\\\[1ex]\\Large {row[ka]} }}\n")
                 c += 1
+                if row[ke] in emailsreg:
+                    print(f'Row {l} is duplicated: {row[ke]} {row[kn]}')
+                emailsreg.append(row[ke])
             l+=1
 
     if c % nbadgesppage > 0:
         ofile.close()
-    
+
+    uniquereg = set(emailsreg)
+    print(f'There are {len(uniquereg)} registered participants')
+        
     return
 
 def options():
@@ -65,6 +75,7 @@ def options():
     parser.add_argument('-d', '--delimiter', help='Delimiter of the csv input file, by default ","', default=',')
     parser.add_argument('-r', '--removerows', help='Rows to be removed', default='')
     parser.add_argument('-b', '--nbadgesppage', help='Number of badges per page', default='8')
+    parser.add_argument('-e', '--emailkey', help='Key for email field', default='replyto')
     parser.add_argument('-n', '--namekey', help='Key for name field', default='name-and-surname')
     parser.add_argument('-a', '--affkey', help='Key for affiliation field', default='affiliation')
     args = parser.parse_args()
