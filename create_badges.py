@@ -51,7 +51,11 @@ def main():
                 if c % nbadgesppage == 0:
                     ofile.close()
                     ofile = open(f"{outfilename[0]}_{int(c/nbadgesppage)+1}.{outfilename[1]}", 'w')
-                ofile.write(f"\\myboxI{{\\huge {row[kn]}\\\\[1ex]\\Large {row[ka]} }}\n")
+                if len(row[ka]) < 3 or 'student' in row[ka].lower():
+                    afffix = ''
+                else:
+                    afffix = row[ka]
+                ofile.write(f"\\myboxI{{\\huge {row[kn]}\\\\[1ex]\\Large {afffix} }}\n")
                 c += 1
                 if row[ke] in emailsreg:
                     print(f'Row {l} is duplicated: {row[ke]} {row[kn]}')
